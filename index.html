@@ -9,51 +9,68 @@
 </head>
 <body>
 
-  <!-- ============ Header ============ -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#top" class="brand">Austinverse</a>
+  <div class="page-shell">
 
-      <nav class="main-nav" aria-label="Main navigation">
-        <ul>
-          <li><a href="#work" data-i18n="nav.work">Work</a></li>
-          <li><a href="#about" data-i18n="nav.about">About</a></li>
-        </ul>
+    <!-- ============ Sidebar (identity + nav) ============ -->
+    <aside class="sidebar" id="top">
+      <div class="sidebar-top">
+        <button type="button" class="lang-toggle" id="langToggle" aria-label="Switch language">
+          <span data-i18n="lang.toggleLabel">EN</span>
+        </button>
+      </div>
+
+      <div class="avatar" aria-hidden="true">
+        <span data-i18n="sidebar.photoPlaceholder">[PROFILE_PHOTO]</span>
+      </div>
+
+      <p class="role-tag" data-i18n="sidebar.roleTag">[ROLE_TAG]</p>
+      <h1 class="brand-name">Austinverse</h1>
+      <p class="sidebar-tagline" data-i18n="sidebar.tagline">[SIDEBAR_TAGLINE]</p>
+      <p class="sidebar-bio" data-i18n="sidebar.bio">[SIDEBAR_BIO]</p>
+
+      <nav class="bullet-nav" aria-label="Main navigation">
+        <a href="#work"><span class="bullet" aria-hidden="true">&bull;</span><span data-i18n="nav.work">Work</span></a>
+        <a href="#about"><span class="bullet" aria-hidden="true">&bull;</span><span data-i18n="nav.about">About</span></a>
       </nav>
 
-      <div class="header-controls">
-        <button type="button" class="lang-toggle" id="langToggle" aria-label="Switch language">
-          <span data-i18n="lang.toggleLabel">EN / 中</span>
-        </button>
-        <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle menu">
-          <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-bar"></span>
-        </button>
+      <div class="sidebar-meta">
+        <div class="meta-block">
+          <h2 data-i18n="sidebar.focusLabel">[FOCUS_LABEL]</h2>
+          <p data-i18n="sidebar.focusValue">[FOCUS_VALUE]</p>
+        </div>
+        <div class="meta-block">
+          <h2 data-i18n="sidebar.flowLabel">[FLOW_LABEL]</h2>
+          <p data-i18n="sidebar.flowValue">[FLOW_VALUE]</p>
+        </div>
       </div>
-    </div>
-  </header>
+    </aside>
 
-  <main id="top">
+    <!-- ============ Main content ============ -->
+    <main class="content">
 
-    <!-- ============ Hero ============ -->
-    <section class="hero" id="hero">
-      <div class="container hero-inner">
-        <h1 class="hero-statement" data-i18n="hero.statement">[HERO_STATEMENT]</h1>
-        <p class="hero-subtitle" data-i18n="hero.subtitle">[HERO_SUBTITLE]</p>
-      </div>
-    </section>
+      <!-- Hero / intro -->
+      <section class="content-section" id="hero">
+        <p class="section-label"><span class="dot" aria-hidden="true"></span><span data-i18n="hero.label">INTRO</span></p>
+        <h2 class="section-heading" data-i18n="hero.statement">[HERO_STATEMENT]</h2>
+        <div class="card">
+          <p data-i18n="hero.subtitle">[HERO_SUBTITLE]</p>
+        </div>
+      </section>
 
-    <!-- ============ Work ============ -->
-    <section class="work" id="work">
-      <div class="container">
-        <h2 class="section-title" data-i18n="work.sectionTitle">[WORK_SECTION_TITLE]</h2>
+      <!-- Work -->
+      <section class="content-section" id="work">
+        <p class="section-label"><span class="dot" aria-hidden="true"></span><span data-i18n="work.label">SELECTED WORK</span></p>
+        <h2 class="section-heading" data-i18n="work.sectionTitle">[WORK_SECTION_TITLE]</h2>
 
         <div class="work-grid">
 
           <!-- Work Card 1 -->
           <article class="work-card" data-card="1">
-            <div class="work-card-thumb" aria-hidden="true"></div>
+            <div class="work-card-thumb" aria-hidden="true">
+              <button type="button" class="work-card-view" data-target="work-detail-1">
+                <span data-i18n="work.viewLabel">VIEW</span>
+              </button>
+            </div>
             <div class="work-card-body">
               <h3 class="work-card-title" data-i18n="work.card1.title">[WORK_1_TITLE]</h3>
               <p class="work-card-desc" data-i18n="work.card1.desc">[WORK_1_DESC]</p>
@@ -73,7 +90,11 @@
 
           <!-- Work Card 2 -->
           <article class="work-card" data-card="2">
-            <div class="work-card-thumb" aria-hidden="true"></div>
+            <div class="work-card-thumb" aria-hidden="true">
+              <button type="button" class="work-card-view" data-target="work-detail-2">
+                <span data-i18n="work.viewLabel">VIEW</span>
+              </button>
+            </div>
             <div class="work-card-body">
               <h3 class="work-card-title" data-i18n="work.card2.title">[WORK_2_TITLE]</h3>
               <p class="work-card-desc" data-i18n="work.card2.desc">[WORK_2_DESC]</p>
@@ -93,7 +114,11 @@
 
           <!-- Work Card 3 -->
           <article class="work-card" data-card="3">
-            <div class="work-card-thumb" aria-hidden="true"></div>
+            <div class="work-card-thumb" aria-hidden="true">
+              <button type="button" class="work-card-view" data-target="work-detail-3">
+                <span data-i18n="work.viewLabel">VIEW</span>
+              </button>
+            </div>
             <div class="work-card-body">
               <h3 class="work-card-title" data-i18n="work.card3.title">[WORK_3_TITLE]</h3>
               <p class="work-card-desc" data-i18n="work.card3.desc">[WORK_3_DESC]</p>
@@ -112,39 +137,36 @@
           </article>
 
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ============ About ============ -->
-    <section class="about" id="about">
-      <div class="container about-inner">
-        <h2 class="section-title" data-i18n="about.sectionTitle">[ABOUT_SECTION_TITLE]</h2>
+      <!-- About -->
+      <section class="content-section" id="about">
+        <p class="section-label"><span class="dot" aria-hidden="true"></span><span data-i18n="about.label">ABOUT</span></p>
+        <h2 class="section-heading" data-i18n="about.sectionTitle">[ABOUT_SECTION_TITLE]</h2>
 
-        <div class="about-narrative" data-i18n="about.narrative">
-          [ABOUT_NARRATIVE]
+        <div class="card">
+          <p data-i18n="about.narrative">[ABOUT_NARRATIVE]</p>
         </div>
 
-        <div class="about-contact">
-          <h3 data-i18n="about.contactTitle">[CONTACT_TITLE]</h3>
-          <ul class="contact-list">
-            <li>
-              <span class="contact-label" data-i18n="about.emailLabel">[CONTACT_EMAIL_LABEL]</span>
-              <a href="mailto:PLACEHOLDER_EMAIL@example.com" data-i18n="about.emailValue">[CONTACT_EMAIL_VALUE]</a>
-            </li>
-            <li>
-              <span class="contact-label" data-i18n="about.linkedinLabel">[CONTACT_LINKEDIN_LABEL]</span>
-              <a href="#" id="linkedinLink" target="_blank" rel="noopener noreferrer" data-i18n="about.linkedinValue">[LINKEDIN_URL]</a>
-            </li>
-          </ul>
+        <p class="section-label section-label-sub"><span class="dot" aria-hidden="true"></span><span data-i18n="about.contactLabel">CONTACT</span></p>
+        <div class="contact-grid">
+          <div class="card contact-card">
+            <p class="contact-label" data-i18n="about.emailLabel">EMAIL</p>
+            <a href="mailto:PLACEHOLDER_EMAIL@example.com" data-i18n="about.emailValue">[CONTACT_EMAIL_VALUE]</a>
+          </div>
+          <div class="card contact-card">
+            <p class="contact-label" data-i18n="about.linkedinLabel">LINKEDIN</p>
+            <a href="#" id="linkedinLink" target="_blank" rel="noopener noreferrer" data-i18n="about.linkedinValue">[LINKEDIN_URL]</a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-  </main>
+    </main>
+  </div>
 
   <!-- ============ Footer ============ -->
   <footer class="site-footer">
-    <div class="container footer-inner">
+    <div class="footer-inner">
       <p class="footer-copyright">
         <span>&copy; <span id="year"></span> Austinverse.</span>
         <span data-i18n="footer.rights">[FOOTER_RIGHTS]</span>
