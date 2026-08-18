@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Austinverse</title>
+  <meta name="description" content="[SITE_DESCRIPTION]">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ Header ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">Austinverse</a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#work" data-i18n="nav.work">Work</a></li>
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-controls">
+        <button type="button" class="lang-toggle" id="langToggle" aria-label="Switch language">
+          <span data-i18n="lang.toggleLabel">EN / 中</span>
+        </button>
+        <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ Hero ============ -->
+    <section class="hero" id="hero">
+      <div class="container hero-inner">
+        <h1 class="hero-statement" data-i18n="hero.statement">[HERO_STATEMENT]</h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">[HERO_SUBTITLE]</p>
+      </div>
+    </section>
+
+    <!-- ============ Work ============ -->
+    <section class="work" id="work">
+      <div class="container">
+        <h2 class="section-title" data-i18n="work.sectionTitle">[WORK_SECTION_TITLE]</h2>
+
+        <div class="work-grid">
+
+          <!-- Work Card 1 -->
+          <article class="work-card" data-card="1">
+            <div class="work-card-thumb" aria-hidden="true"></div>
+            <div class="work-card-body">
+              <h3 class="work-card-title" data-i18n="work.card1.title">[WORK_1_TITLE]</h3>
+              <p class="work-card-desc" data-i18n="work.card1.desc">[WORK_1_DESC]</p>
+              <ul class="work-card-tags">
+                <li data-i18n="work.card1.tag1">[WORK_1_TAG_1]</li>
+                <li data-i18n="work.card1.tag2">[WORK_1_TAG_2]</li>
+                <li data-i18n="work.card1.tag3">[WORK_1_TAG_3]</li>
+              </ul>
+              <button type="button" class="work-card-toggle" aria-expanded="false" aria-controls="work-detail-1">
+                <span data-i18n="work.expandLabel">[EXPAND_LABEL]</span>
+              </button>
+              <div class="work-card-detail" id="work-detail-1" hidden>
+                <p data-i18n="work.card1.detail">[WORK_1_DETAIL]</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Work Card 2 -->
+          <article class="work-card" data-card="2">
+            <div class="work-card-thumb" aria-hidden="true"></div>
+            <div class="work-card-body">
+              <h3 class="work-card-title" data-i18n="work.card2.title">[WORK_2_TITLE]</h3>
+              <p class="work-card-desc" data-i18n="work.card2.desc">[WORK_2_DESC]</p>
+              <ul class="work-card-tags">
+                <li data-i18n="work.card2.tag1">[WORK_2_TAG_1]</li>
+                <li data-i18n="work.card2.tag2">[WORK_2_TAG_2]</li>
+                <li data-i18n="work.card2.tag3">[WORK_2_TAG_3]</li>
+              </ul>
+              <button type="button" class="work-card-toggle" aria-expanded="false" aria-controls="work-detail-2">
+                <span data-i18n="work.expandLabel">[EXPAND_LABEL]</span>
+              </button>
+              <div class="work-card-detail" id="work-detail-2" hidden>
+                <p data-i18n="work.card2.detail">[WORK_2_DETAIL]</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Work Card 3 -->
+          <article class="work-card" data-card="3">
+            <div class="work-card-thumb" aria-hidden="true"></div>
+            <div class="work-card-body">
+              <h3 class="work-card-title" data-i18n="work.card3.title">[WORK_3_TITLE]</h3>
+              <p class="work-card-desc" data-i18n="work.card3.desc">[WORK_3_DESC]</p>
+              <ul class="work-card-tags">
+                <li data-i18n="work.card3.tag1">[WORK_3_TAG_1]</li>
+                <li data-i18n="work.card3.tag2">[WORK_3_TAG_2]</li>
+                <li data-i18n="work.card3.tag3">[WORK_3_TAG_3]</li>
+              </ul>
+              <button type="button" class="work-card-toggle" aria-expanded="false" aria-controls="work-detail-3">
+                <span data-i18n="work.expandLabel">[EXPAND_LABEL]</span>
+              </button>
+              <div class="work-card-detail" id="work-detail-3" hidden>
+                <p data-i18n="work.card3.detail">[WORK_3_DETAIL]</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ About ============ -->
+    <section class="about" id="about">
+      <div class="container about-inner">
+        <h2 class="section-title" data-i18n="about.sectionTitle">[ABOUT_SECTION_TITLE]</h2>
+
+        <div class="about-narrative" data-i18n="about.narrative">
+          [ABOUT_NARRATIVE]
+        </div>
+
+        <div class="about-contact">
+          <h3 data-i18n="about.contactTitle">[CONTACT_TITLE]</h3>
+          <ul class="contact-list">
+            <li>
+              <span class="contact-label" data-i18n="about.emailLabel">[CONTACT_EMAIL_LABEL]</span>
+              <a href="mailto:PLACEHOLDER_EMAIL@example.com" data-i18n="about.emailValue">[CONTACT_EMAIL_VALUE]</a>
+            </li>
+            <li>
+              <span class="contact-label" data-i18n="about.linkedinLabel">[CONTACT_LINKEDIN_LABEL]</span>
+              <a href="#" id="linkedinLink" target="_blank" rel="noopener noreferrer" data-i18n="about.linkedinValue">[LINKEDIN_URL]</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-copyright">
+        <span>&copy; <span id="year"></span> Austinverse.</span>
+        <span data-i18n="footer.rights">[FOOTER_RIGHTS]</span>
+      </p>
+      <ul class="social-links">
+        <li><a href="#" data-i18n="footer.social1">[SOCIAL_LINK_1_LABEL]</a></li>
+        <li><a href="#" data-i18n="footer.social2">[SOCIAL_LINK_2_LABEL]</a></li>
+        <li><a href="#" data-i18n="footer.social3">[SOCIAL_LINK_3_LABEL]</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
