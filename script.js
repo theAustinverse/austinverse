@@ -1,6 +1,6 @@
 /* ==========================================================================
    Austinverse — Portfolio Scaffold
-   Vanilla JS: i18n toggle, mobile nav, work card expand, scroll reveal.
+   Vanilla JS: i18n toggle, work card expand, scroll reveal.
    ========================================================================== */
 
 (function () {
@@ -13,9 +13,20 @@
       "nav.work": "作品",
       "nav.about": "關於",
       "lang.toggleLabel": "EN",
+      "sidebar.photoPlaceholder": "[PROFILE_PHOTO]",
+      "sidebar.roleTag": "[ROLE_TAG_ZH]",
+      "sidebar.tagline": "[SIDEBAR_TAGLINE_ZH]",
+      "sidebar.bio": "[SIDEBAR_BIO_ZH]",
+      "sidebar.focusLabel": "擅長",
+      "sidebar.focusValue": "[FOCUS_VALUE_ZH]",
+      "sidebar.flowLabel": "合作方式",
+      "sidebar.flowValue": "[FLOW_VALUE_ZH]",
+      "hero.label": "INTRO",
       "hero.statement": "[HERO_STATEMENT_ZH]",
       "hero.subtitle": "[HERO_SUBTITLE_ZH]",
+      "work.label": "SELECTED WORK",
       "work.sectionTitle": "[WORK_SECTION_TITLE_ZH]",
+      "work.viewLabel": "VIEW",
       "work.expandLabel": "[EXPAND_LABEL_ZH]",
       "work.card1.title": "[WORK_1_TITLE_ZH]",
       "work.card1.desc": "[WORK_1_DESC_ZH]",
@@ -35,12 +46,13 @@
       "work.card3.tag2": "[WORK_3_TAG_2_ZH]",
       "work.card3.tag3": "[WORK_3_TAG_3_ZH]",
       "work.card3.detail": "[WORK_3_DETAIL_ZH]",
+      "about.label": "ABOUT",
       "about.sectionTitle": "[ABOUT_SECTION_TITLE_ZH]",
       "about.narrative": "[ABOUT_NARRATIVE_ZH]",
-      "about.contactTitle": "[CONTACT_TITLE_ZH]",
-      "about.emailLabel": "[CONTACT_EMAIL_LABEL_ZH]",
+      "about.contactLabel": "CONTACT",
+      "about.emailLabel": "EMAIL",
       "about.emailValue": "[CONTACT_EMAIL_VALUE_ZH]",
-      "about.linkedinLabel": "[CONTACT_LINKEDIN_LABEL_ZH]",
+      "about.linkedinLabel": "LINKEDIN",
       "about.linkedinValue": "[LINKEDIN_URL_ZH]",
       "footer.rights": "[FOOTER_RIGHTS_ZH]",
       "footer.social1": "[SOCIAL_LINK_1_LABEL_ZH]",
@@ -51,9 +63,20 @@
       "nav.work": "Work",
       "nav.about": "About",
       "lang.toggleLabel": "中",
+      "sidebar.photoPlaceholder": "[PROFILE_PHOTO]",
+      "sidebar.roleTag": "[ROLE_TAG_EN]",
+      "sidebar.tagline": "[SIDEBAR_TAGLINE_EN]",
+      "sidebar.bio": "[SIDEBAR_BIO_EN]",
+      "sidebar.focusLabel": "Focus",
+      "sidebar.focusValue": "[FOCUS_VALUE_EN]",
+      "sidebar.flowLabel": "Process",
+      "sidebar.flowValue": "[FLOW_VALUE_EN]",
+      "hero.label": "INTRO",
       "hero.statement": "[HERO_STATEMENT_EN]",
       "hero.subtitle": "[HERO_SUBTITLE_EN]",
+      "work.label": "SELECTED WORK",
       "work.sectionTitle": "[WORK_SECTION_TITLE_EN]",
+      "work.viewLabel": "VIEW",
       "work.expandLabel": "[EXPAND_LABEL_EN]",
       "work.card1.title": "[WORK_1_TITLE_EN]",
       "work.card1.desc": "[WORK_1_DESC_EN]",
@@ -73,12 +96,13 @@
       "work.card3.tag2": "[WORK_3_TAG_2_EN]",
       "work.card3.tag3": "[WORK_3_TAG_3_EN]",
       "work.card3.detail": "[WORK_3_DETAIL_EN]",
+      "about.label": "ABOUT",
       "about.sectionTitle": "[ABOUT_SECTION_TITLE_EN]",
       "about.narrative": "[ABOUT_NARRATIVE_EN]",
-      "about.contactTitle": "[CONTACT_TITLE_EN]",
-      "about.emailLabel": "[CONTACT_EMAIL_LABEL_EN]",
+      "about.contactLabel": "CONTACT",
+      "about.emailLabel": "EMAIL",
       "about.emailValue": "[CONTACT_EMAIL_VALUE_EN]",
-      "about.linkedinLabel": "[CONTACT_LINKEDIN_LABEL_EN]",
+      "about.linkedinLabel": "LINKEDIN",
       "about.linkedinValue": "[LINKEDIN_URL_EN]",
       "footer.rights": "[FOOTER_RIGHTS_EN]",
       "footer.social1": "[SOCIAL_LINK_1_LABEL_EN]",
@@ -120,43 +144,39 @@
     });
   }
 
-  /* ---------- Mobile nav toggle ---------- */
-  var navToggle = document.getElementById("navToggle");
-  var mainNav = document.querySelector(".main-nav");
-
-  if (navToggle && mainNav) {
-    navToggle.addEventListener("click", function () {
-      var isOpen = mainNav.classList.toggle("is-open");
-      navToggle.setAttribute("aria-expanded", String(isOpen));
-    });
-
-    mainNav.addEventListener("click", function (event) {
-      if (event.target.tagName === "A") {
-        mainNav.classList.remove("is-open");
-        navToggle.setAttribute("aria-expanded", "false");
-      }
-    });
+  /* ---------- Work card expand/collapse ---------- */
+  function toggleWorkDetail(targetId) {
+    var detail = document.getElementById(targetId);
+    if (!detail) return;
+    var isHidden = detail.hasAttribute("hidden");
+    if (isHidden) {
+      detail.removeAttribute("hidden");
+    } else {
+      detail.setAttribute("hidden", "");
+    }
+    var toggleBtn = document.querySelector(
+      '.work-card-toggle[aria-controls="' + targetId + '"]'
+    );
+    if (toggleBtn) {
+      toggleBtn.setAttribute("aria-expanded", String(isHidden));
+    }
   }
 
-  /* ---------- Work card expand/collapse ---------- */
   document.querySelectorAll(".work-card-toggle").forEach(function (btn) {
     btn.addEventListener("click", function () {
-      var targetId = btn.getAttribute("aria-controls");
-      var detail = document.getElementById(targetId);
-      if (!detail) return;
-      var isHidden = detail.hasAttribute("hidden");
-      if (isHidden) {
-        detail.removeAttribute("hidden");
-      } else {
-        detail.setAttribute("hidden", "");
-      }
-      btn.setAttribute("aria-expanded", String(isHidden));
+      toggleWorkDetail(btn.getAttribute("aria-controls"));
     });
   });
 
-  /* ---------- Scroll reveal for work cards ---------- */
-  var cards = document.querySelectorAll(".work-card");
-  if ("IntersectionObserver" in window && cards.length) {
+  document.querySelectorAll(".work-card-view").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      toggleWorkDetail(btn.getAttribute("data-target"));
+    });
+  });
+
+  /* ---------- Scroll reveal ---------- */
+  var revealEls = document.querySelectorAll(".work-card, .contact-card");
+  if ("IntersectionObserver" in window && revealEls.length) {
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -168,12 +188,12 @@
       },
       { threshold: 0.15 }
     );
-    cards.forEach(function (card) {
-      observer.observe(card);
+    revealEls.forEach(function (el) {
+      observer.observe(el);
     });
   } else {
-    cards.forEach(function (card) {
-      card.classList.add("is-visible");
+    revealEls.forEach(function (el) {
+      el.classList.add("is-visible");
     });
   }
 
