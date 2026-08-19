@@ -112,9 +112,10 @@ button {
 }
 
 .brand-mascot {
-  width: 32px;
-  height: 32px;
+  width: 1.7em;
+  height: 1.7em;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .bullet-nav {
@@ -131,7 +132,8 @@ button {
 }
 
 .bullet-nav a:hover,
-.bullet-nav a:focus-visible {
+.bullet-nav a:focus-visible,
+.bullet-nav a[aria-current="page"] {
   color: var(--color-accent);
 }
 
