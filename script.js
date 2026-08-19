@@ -1,6 +1,6 @@
 /* ==========================================================================
-   Austinverse — Portfolio Scaffold
-   Vanilla JS: i18n toggle, work card expand, scroll reveal.
+   Austinverse — Portfolio
+   Vanilla JS: i18n toggle, mobile nav, work card expand, scroll reveal.
    ========================================================================== */
 
 (function () {
@@ -12,17 +12,11 @@
     zh: {
       "nav.work": "作品",
       "nav.about": "關於",
+      "nav.contact": "聯絡",
       "lang.toggleLabel": "EN",
-      "sidebar.photoPlaceholder": "[PROFILE_PHOTO]",
-      "sidebar.roleTag": "[ROLE_TAG_ZH]",
-      "sidebar.tagline": "[SIDEBAR_TAGLINE_ZH]",
-      "sidebar.bio": "[SIDEBAR_BIO_ZH]",
-      "sidebar.focusLabel": "擅長",
-      "sidebar.focusValue": "[FOCUS_VALUE_ZH]",
-      "sidebar.flowLabel": "合作方式",
-      "sidebar.flowValue": "[FLOW_VALUE_ZH]",
       "hero.label": "INTRO",
       "hero.statement": "[HERO_STATEMENT_ZH]",
+      "hero.ctaLabel": "查看作品 ↓",
       "hero.subtitle": "[HERO_SUBTITLE_ZH]",
       "work.label": "SELECTED WORK",
       "work.sectionTitle": "[WORK_SECTION_TITLE_ZH]",
@@ -49,10 +43,11 @@
       "about.label": "ABOUT",
       "about.sectionTitle": "[ABOUT_SECTION_TITLE_ZH]",
       "about.narrative": "[ABOUT_NARRATIVE_ZH]",
-      "about.contactLabel": "CONTACT",
-      "about.emailLabel": "EMAIL",
+      "about.focusLabel": "FOCUS",
+      "about.focusValue": "[FOCUS_VALUE_ZH]",
+      "about.flowLabel": "PROCESS",
+      "about.flowValue": "[FLOW_VALUE_ZH]",
       "about.emailValue": "[CONTACT_EMAIL_VALUE_ZH]",
-      "about.linkedinLabel": "LINKEDIN",
       "about.linkedinValue": "[LINKEDIN_URL_ZH]",
       "footer.rights": "[FOOTER_RIGHTS_ZH]",
       "footer.social1": "[SOCIAL_LINK_1_LABEL_ZH]",
@@ -62,17 +57,11 @@
     en: {
       "nav.work": "Work",
       "nav.about": "About",
+      "nav.contact": "Contact",
       "lang.toggleLabel": "中",
-      "sidebar.photoPlaceholder": "[PROFILE_PHOTO]",
-      "sidebar.roleTag": "[ROLE_TAG_EN]",
-      "sidebar.tagline": "[SIDEBAR_TAGLINE_EN]",
-      "sidebar.bio": "[SIDEBAR_BIO_EN]",
-      "sidebar.focusLabel": "Focus",
-      "sidebar.focusValue": "[FOCUS_VALUE_EN]",
-      "sidebar.flowLabel": "Process",
-      "sidebar.flowValue": "[FLOW_VALUE_EN]",
       "hero.label": "INTRO",
       "hero.statement": "[HERO_STATEMENT_EN]",
+      "hero.ctaLabel": "View Work ↓",
       "hero.subtitle": "[HERO_SUBTITLE_EN]",
       "work.label": "SELECTED WORK",
       "work.sectionTitle": "[WORK_SECTION_TITLE_EN]",
@@ -99,10 +88,11 @@
       "about.label": "ABOUT",
       "about.sectionTitle": "[ABOUT_SECTION_TITLE_EN]",
       "about.narrative": "[ABOUT_NARRATIVE_EN]",
-      "about.contactLabel": "CONTACT",
-      "about.emailLabel": "EMAIL",
+      "about.focusLabel": "FOCUS",
+      "about.focusValue": "[FOCUS_VALUE_EN]",
+      "about.flowLabel": "PROCESS",
+      "about.flowValue": "[FLOW_VALUE_EN]",
       "about.emailValue": "[CONTACT_EMAIL_VALUE_EN]",
-      "about.linkedinLabel": "LINKEDIN",
       "about.linkedinValue": "[LINKEDIN_URL_EN]",
       "footer.rights": "[FOOTER_RIGHTS_EN]",
       "footer.social1": "[SOCIAL_LINK_1_LABEL_EN]",
@@ -144,6 +134,24 @@
     });
   }
 
+  /* ---------- Mobile nav toggle ---------- */
+  var navToggle = document.getElementById("navToggle");
+  var mainNav = document.getElementById("mainNav");
+
+  if (navToggle && mainNav) {
+    navToggle.addEventListener("click", function () {
+      var isOpen = mainNav.classList.toggle("is-open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    mainNav.addEventListener("click", function (event) {
+      if (event.target.tagName === "A" || event.target.closest("a")) {
+        mainNav.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
   /* ---------- Work card expand/collapse ---------- */
   function toggleWorkDetail(targetId) {
     var detail = document.getElementById(targetId);
@@ -175,7 +183,7 @@
   });
 
   /* ---------- Scroll reveal ---------- */
-  var revealEls = document.querySelectorAll(".work-card, .contact-card");
+  var revealEls = document.querySelectorAll(".work-card");
   if ("IntersectionObserver" in window && revealEls.length) {
     var observer = new IntersectionObserver(
       function (entries) {

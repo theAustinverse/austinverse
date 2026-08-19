@@ -9,164 +9,174 @@
 </head>
 <body>
 
-  <div class="page-shell">
+  <!-- ============ Header / top nav ============ -->
+  <header class="site-header" id="top">
+    <div class="container nav-inner">
+      <a href="#top" class="brand-name">Austinverse</a>
 
-    <!-- ============ Sidebar (identity + nav) ============ -->
-    <aside class="sidebar" id="top">
-      <div class="sidebar-top">
+      <nav class="bullet-nav" id="mainNav" aria-label="Main navigation">
+        <a href="#work"><span class="bullet" aria-hidden="true">&bull;</span><span data-i18n="nav.work">Work</span></a>
+        <a href="#about"><span class="bullet" aria-hidden="true">&bull;</span><span data-i18n="nav.about">About</span></a>
+        <a href="#contact"><span class="bullet" aria-hidden="true">&bull;</span><span data-i18n="nav.contact">Contact</span></a>
+      </nav>
+
+      <div class="nav-controls">
         <button type="button" class="lang-toggle" id="langToggle" aria-label="Switch language">
           <span data-i18n="lang.toggleLabel">EN</span>
         </button>
+        <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Toggle menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
       </div>
+    </div>
+  </header>
 
-      <div class="avatar" aria-hidden="true">
-        <span data-i18n="sidebar.photoPlaceholder">[PROFILE_PHOTO]</span>
-      </div>
+  <main>
 
-      <p class="role-tag" data-i18n="sidebar.roleTag">[ROLE_TAG]</p>
-      <h1 class="brand-name">Austinverse</h1>
-      <p class="sidebar-tagline" data-i18n="sidebar.tagline">[SIDEBAR_TAGLINE]</p>
-      <p class="sidebar-bio" data-i18n="sidebar.bio">[SIDEBAR_BIO]</p>
-
-      <nav class="bullet-nav" aria-label="Main navigation">
-        <a href="#work"><span class="bullet" aria-hidden="true">&bull;</span><span data-i18n="nav.work">Work</span></a>
-        <a href="#about"><span class="bullet" aria-hidden="true">&bull;</span><span data-i18n="nav.about">About</span></a>
-      </nav>
-
-      <div class="sidebar-meta">
-        <div class="meta-block">
-          <h2 data-i18n="sidebar.focusLabel">[FOCUS_LABEL]</h2>
-          <p data-i18n="sidebar.focusValue">[FOCUS_VALUE]</p>
-        </div>
-        <div class="meta-block">
-          <h2 data-i18n="sidebar.flowLabel">[FLOW_LABEL]</h2>
-          <p data-i18n="sidebar.flowValue">[FLOW_VALUE]</p>
-        </div>
-      </div>
-    </aside>
-
-    <!-- ============ Main content ============ -->
-    <main class="content">
-
-      <!-- Hero / intro -->
-      <section class="content-section" id="hero">
+    <!-- ============ Hero ============ -->
+    <section class="hero" id="hero">
+      <div class="hero-glow hero-glow-a" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-b" aria-hidden="true"></div>
+      <div class="container hero-inner">
         <p class="section-label"><span class="dot" aria-hidden="true"></span><span data-i18n="hero.label">INTRO</span></p>
-        <h2 class="section-heading" data-i18n="hero.statement">[HERO_STATEMENT]</h2>
-        <div class="card">
-          <p data-i18n="hero.subtitle">[HERO_SUBTITLE]</p>
+        <h1 class="hero-statement" data-i18n="hero.statement">[HERO_STATEMENT]</h1>
+        <div class="hero-cta-row">
+          <a href="#work" class="btn-gradient"><span data-i18n="hero.ctaLabel">View Work ↓</span></a>
+          <p class="hero-subtitle" data-i18n="hero.subtitle">[HERO_SUBTITLE]</p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Work -->
-      <section class="content-section" id="work">
+    <!-- ============ Brand divider ============ -->
+    <div class="brand-divider" aria-hidden="true">
+      <span>austinverse</span>
+    </div>
+
+    <!-- ============ Work ============ -->
+    <section class="content-section" id="work">
+      <div class="container">
         <p class="section-label"><span class="dot" aria-hidden="true"></span><span data-i18n="work.label">SELECTED WORK</span></p>
         <h2 class="section-heading" data-i18n="work.sectionTitle">[WORK_SECTION_TITLE]</h2>
 
         <div class="work-grid">
 
           <!-- Work Card 1 -->
-          <article class="work-card" data-card="1">
-            <div class="work-card-thumb" aria-hidden="true">
-              <button type="button" class="work-card-view" data-target="work-detail-1">
-                <span data-i18n="work.viewLabel">VIEW</span>
-              </button>
-            </div>
-            <div class="work-card-body">
-              <h3 class="work-card-title" data-i18n="work.card1.title">XX年度盛會售票系統</h3>
-              <p class="work-card-desc" data-i18n="work.card1.desc">打造一個可以讓團隊夥伴體驗搶票刺激感的網站。</p>
-              <ul class="work-card-tags">
-                <li data-i18n="work.card1.tag1">Claude Code</li>
-                <li data-i18n="work.card1.tag2">Vibe Coding</li>
-                <li data-i18n="work.card1.tag3">Google Sheets</li>
-              </ul>
-              <button type="button" class="work-card-toggle" aria-expanded="false" aria-controls="work-detail-1">
-                <span data-i18n="work.expandLabel">[EXPAND_LABEL]</span>
-              </button>
-              <div class="work-card-detail" id="work-detail-1" hidden>
-                <p data-i18n="work.card1.detail">這套系統是我不斷跟 Claude Code 對話迭代出來的成果,過程中裝好各種開發環境並串接到 GitHub 進行版本控管,Google Sheets 則用來匯出報名與購票數據。從零到上線大約花了一週,最大的挑戰是環境安裝與層出不窮的 bug;介面風格則是不斷參考其他網站,再依照使用者實際回饋持續調整而成。上線後,團隊第一次擺脫過去用 Google 表單登記票券的方式,體驗到真正的搶票節奏與刺激感——這也是我第一次完整走過 vibe coding 流程的作品,奠定了後續運用 AI 協作開發的基礎。</p>
+          <div class="tilt-wrap">
+            <article class="work-card" data-card="1">
+              <div class="work-card-thumb" aria-hidden="true">
+                <button type="button" class="work-card-view" data-target="work-detail-1">
+                  <span data-i18n="work.viewLabel">VIEW</span>
+                </button>
               </div>
-            </div>
-          </article>
+              <div class="work-card-body">
+                <h3 class="work-card-title" data-i18n="work.card1.title">XX年度盛會售票系統</h3>
+                <p class="work-card-desc" data-i18n="work.card1.desc">打造一個可以讓團隊夥伴體驗搶票刺激感的網站。</p>
+                <ul class="work-card-tags">
+                  <li data-i18n="work.card1.tag1">Claude Code</li>
+                  <li data-i18n="work.card1.tag2">Vibe Coding</li>
+                  <li data-i18n="work.card1.tag3">Google Sheets</li>
+                </ul>
+                <button type="button" class="work-card-toggle" aria-expanded="false" aria-controls="work-detail-1">
+                  <span data-i18n="work.expandLabel">[EXPAND_LABEL]</span>
+                </button>
+                <div class="work-card-detail" id="work-detail-1" hidden>
+                  <p data-i18n="work.card1.detail">這套系統是我不斷跟 Claude Code 對話迭代出來的成果,過程中裝好各種開發環境並串接到 GitHub 進行版本控管,Google Sheets 則用來匯出報名與購票數據。從零到上線大約花了一週,最大的挑戰是環境安裝與層出不窮的 bug;介面風格則是不斷參考其他網站,再依照使用者實際回饋持續調整而成。上線後,團隊第一次擺脫過去用 Google 表單登記票券的方式,體驗到真正的搶票節奏與刺激感——這也是我第一次完整走過 vibe coding 流程的作品,奠定了後續運用 AI 協作開發的基礎。</p>
+                </div>
+              </div>
+            </article>
+          </div>
 
           <!-- Work Card 2 -->
-          <article class="work-card" data-card="2">
-            <div class="work-card-thumb" aria-hidden="true">
-              <button type="button" class="work-card-view" data-target="work-detail-2">
-                <span data-i18n="work.viewLabel">VIEW</span>
-              </button>
-            </div>
-            <div class="work-card-body">
-              <h3 class="work-card-title" data-i18n="work.card2.title">[WORK_2_TITLE]</h3>
-              <p class="work-card-desc" data-i18n="work.card2.desc">[WORK_2_DESC]</p>
-              <ul class="work-card-tags">
-                <li data-i18n="work.card2.tag1">[WORK_2_TAG_1]</li>
-                <li data-i18n="work.card2.tag2">[WORK_2_TAG_2]</li>
-                <li data-i18n="work.card2.tag3">[WORK_2_TAG_3]</li>
-              </ul>
-              <button type="button" class="work-card-toggle" aria-expanded="false" aria-controls="work-detail-2">
-                <span data-i18n="work.expandLabel">[EXPAND_LABEL]</span>
-              </button>
-              <div class="work-card-detail" id="work-detail-2" hidden>
-                <p data-i18n="work.card2.detail">[WORK_2_DETAIL]</p>
+          <div class="tilt-wrap">
+            <article class="work-card" data-card="2">
+              <div class="work-card-thumb" aria-hidden="true">
+                <button type="button" class="work-card-view" data-target="work-detail-2">
+                  <span data-i18n="work.viewLabel">VIEW</span>
+                </button>
               </div>
-            </div>
-          </article>
+              <div class="work-card-body">
+                <h3 class="work-card-title" data-i18n="work.card2.title">[WORK_2_TITLE]</h3>
+                <p class="work-card-desc" data-i18n="work.card2.desc">[WORK_2_DESC]</p>
+                <ul class="work-card-tags">
+                  <li data-i18n="work.card2.tag1">[WORK_2_TAG_1]</li>
+                  <li data-i18n="work.card2.tag2">[WORK_2_TAG_2]</li>
+                  <li data-i18n="work.card2.tag3">[WORK_2_TAG_3]</li>
+                </ul>
+                <button type="button" class="work-card-toggle" aria-expanded="false" aria-controls="work-detail-2">
+                  <span data-i18n="work.expandLabel">[EXPAND_LABEL]</span>
+                </button>
+                <div class="work-card-detail" id="work-detail-2" hidden>
+                  <p data-i18n="work.card2.detail">[WORK_2_DETAIL]</p>
+                </div>
+              </div>
+            </article>
+          </div>
 
           <!-- Work Card 3 -->
-          <article class="work-card" data-card="3">
-            <div class="work-card-thumb" aria-hidden="true">
-              <button type="button" class="work-card-view" data-target="work-detail-3">
-                <span data-i18n="work.viewLabel">VIEW</span>
-              </button>
-            </div>
-            <div class="work-card-body">
-              <h3 class="work-card-title" data-i18n="work.card3.title">[WORK_3_TITLE]</h3>
-              <p class="work-card-desc" data-i18n="work.card3.desc">[WORK_3_DESC]</p>
-              <ul class="work-card-tags">
-                <li data-i18n="work.card3.tag1">[WORK_3_TAG_1]</li>
-                <li data-i18n="work.card3.tag2">[WORK_3_TAG_2]</li>
-                <li data-i18n="work.card3.tag3">[WORK_3_TAG_3]</li>
-              </ul>
-              <button type="button" class="work-card-toggle" aria-expanded="false" aria-controls="work-detail-3">
-                <span data-i18n="work.expandLabel">[EXPAND_LABEL]</span>
-              </button>
-              <div class="work-card-detail" id="work-detail-3" hidden>
-                <p data-i18n="work.card3.detail">[WORK_3_DETAIL]</p>
+          <div class="tilt-wrap">
+            <article class="work-card" data-card="3">
+              <div class="work-card-thumb" aria-hidden="true">
+                <button type="button" class="work-card-view" data-target="work-detail-3">
+                  <span data-i18n="work.viewLabel">VIEW</span>
+                </button>
               </div>
-            </div>
-          </article>
+              <div class="work-card-body">
+                <h3 class="work-card-title" data-i18n="work.card3.title">[WORK_3_TITLE]</h3>
+                <p class="work-card-desc" data-i18n="work.card3.desc">[WORK_3_DESC]</p>
+                <ul class="work-card-tags">
+                  <li data-i18n="work.card3.tag1">[WORK_3_TAG_1]</li>
+                  <li data-i18n="work.card3.tag2">[WORK_3_TAG_2]</li>
+                  <li data-i18n="work.card3.tag3">[WORK_3_TAG_3]</li>
+                </ul>
+                <button type="button" class="work-card-toggle" aria-expanded="false" aria-controls="work-detail-3">
+                  <span data-i18n="work.expandLabel">[EXPAND_LABEL]</span>
+                </button>
+                <div class="work-card-detail" id="work-detail-3" hidden>
+                  <p data-i18n="work.card3.detail">[WORK_3_DETAIL]</p>
+                </div>
+              </div>
+            </article>
+          </div>
 
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- About -->
-      <section class="content-section" id="about">
+    <!-- ============ About (full-bleed dark) ============ -->
+    <section class="about-section" id="about">
+      <div class="about-glow" aria-hidden="true"></div>
+      <div class="container about-inner">
         <p class="section-label"><span class="dot" aria-hidden="true"></span><span data-i18n="about.label">ABOUT</span></p>
         <h2 class="section-heading" data-i18n="about.sectionTitle">[ABOUT_SECTION_TITLE]</h2>
 
-        <div class="card">
-          <p data-i18n="about.narrative">[ABOUT_NARRATIVE]</p>
-        </div>
-
-        <p class="section-label section-label-sub"><span class="dot" aria-hidden="true"></span><span data-i18n="about.contactLabel">CONTACT</span></p>
-        <div class="contact-grid">
-          <div class="card contact-card">
-            <p class="contact-label" data-i18n="about.emailLabel">EMAIL</p>
-            <a href="mailto:PLACEHOLDER_EMAIL@example.com" data-i18n="about.emailValue">[CONTACT_EMAIL_VALUE]</a>
-          </div>
-          <div class="card contact-card">
-            <p class="contact-label" data-i18n="about.linkedinLabel">LINKEDIN</p>
-            <a href="#" id="linkedinLink" target="_blank" rel="noopener noreferrer" data-i18n="about.linkedinValue">[LINKEDIN_URL]</a>
+        <div class="about-grid">
+          <div class="about-narrative" data-i18n="about.narrative">[ABOUT_NARRATIVE]</div>
+          <div class="about-meta-list">
+            <div class="meta-block">
+              <h3 data-i18n="about.focusLabel">FOCUS</h3>
+              <p data-i18n="about.focusValue">[FOCUS_VALUE]</p>
+            </div>
+            <div class="meta-block">
+              <h3 data-i18n="about.flowLabel">PROCESS</h3>
+              <p data-i18n="about.flowValue">[FLOW_VALUE]</p>
+            </div>
           </div>
         </div>
-      </section>
 
-    </main>
-  </div>
+        <div class="contact-cta-row" id="contact">
+          <a class="btn-gradient" href="mailto:PLACEHOLDER_EMAIL@example.com" data-i18n="about.emailValue">[CONTACT_EMAIL_VALUE]</a>
+          <a class="btn-outline" href="#" id="linkedinLink" target="_blank" rel="noopener noreferrer" data-i18n="about.linkedinValue">[LINKEDIN_URL]</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <!-- ============ Footer ============ -->
   <footer class="site-footer">
-    <div class="footer-inner">
+    <div class="container footer-inner">
       <p class="footer-copyright">
         <span>&copy; <span id="year"></span> Austinverse.</span>
         <span data-i18n="footer.rights">[FOOTER_RIGHTS]</span>
