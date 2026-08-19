@@ -103,9 +103,18 @@ button {
 }
 
 .brand-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-weight: 900;
   font-size: 1.15rem;
   letter-spacing: -0.01em;
+}
+
+.brand-mascot {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
 .bullet-nav {
