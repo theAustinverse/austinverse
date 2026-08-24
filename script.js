@@ -223,49 +223,6 @@
     });
   }
 
-  /* ---------- Custom cursor ---------- */
-  var fineHover = window.matchMedia("(hover: hover) and (pointer: fine)");
-  if (fineHover.matches) {
-    var cursorDot = document.createElement("div");
-    cursorDot.className = "cursor-dot";
-    var cursorRing = document.createElement("div");
-    cursorRing.className = "cursor-ring";
-    document.body.appendChild(cursorDot);
-    document.body.appendChild(cursorRing);
-    htmlEl.classList.add("has-custom-cursor", "cursor-idle");
-
-    var ringX = 0,
-      ringY = 0,
-      pointerX = 0,
-      pointerY = 0;
-
-    document.addEventListener("mousemove", function (event) {
-      pointerX = event.clientX;
-      pointerY = event.clientY;
-      cursorDot.style.transform =
-        "translate(" + pointerX + "px, " + pointerY + "px) translate(-50%, -50%)";
-      htmlEl.classList.remove("cursor-idle");
-    });
-
-    document.addEventListener("mouseleave", function () {
-      htmlEl.classList.add("cursor-idle");
-    });
-
-    function animateRing() {
-      ringX += (pointerX - ringX) * 0.18;
-      ringY += (pointerY - ringY) * 0.18;
-      cursorRing.style.transform =
-        "translate(" + ringX + "px, " + ringY + "px) translate(-50%, -50%)";
-      window.requestAnimationFrame(animateRing);
-    }
-    window.requestAnimationFrame(animateRing);
-
-    document.addEventListener("mouseover", function (event) {
-      var interactive = event.target.closest("a, button, [role='button']");
-      htmlEl.classList.toggle("cursor-hover", Boolean(interactive));
-    });
-  }
-
   /* ---------- Footer year ---------- */
   var yearEl = document.getElementById("year");
   if (yearEl) {
