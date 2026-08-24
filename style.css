@@ -1,19 +1,19 @@
 /* ==========================================================================
    Austinverse — Portfolio
    Vanilla CSS, mobile-first, single breakpoint at 768px.
-   Dark cinematic style: near-black canvas, huge minimal type, thin glowing
-   accents, custom cursor, WebGL hero centerpiece on the homepage.
+   Light cinematic style: warm off-white canvas, huge minimal type, thin
+   accents, custom cursor, glossy WebGL hero centerpiece on the homepage.
    ========================================================================== */
 
 /* ---------- Design tokens ---------- */
 :root {
-  --color-bg: #0a0a0d;
-  --color-bg-void: #050506;
-  --color-bg-elevated: #16171c;
-  --color-border: rgba(244, 245, 246, 0.12);
-  --color-border-strong: rgba(244, 245, 246, 0.22);
-  --color-text: #f4f5f6;
-  --color-text-muted: #8d9097;
+  --color-bg: #f3f1ec;
+  --color-bg-void: #f3f1ec;
+  --color-bg-elevated: #ffffff;
+  --color-border: rgba(14, 15, 18, 0.1);
+  --color-border-strong: rgba(14, 15, 18, 0.22);
+  --color-text: #0e0f12;
+  --color-text-muted: #6b6d73;
   --color-accent: #21a179;
   --color-accent-dark: #16785a;
   --color-accent-pop: #c026d3;
@@ -136,7 +136,7 @@ button {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: rgba(10, 10, 13, 0.72);
+  background-color: rgba(243, 241, 236, 0.78);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--color-border);
 }

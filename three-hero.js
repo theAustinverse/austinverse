@@ -29,27 +29,27 @@ import * as THREE from "./vendor/three.module.min.js";
 
   var geometry = new THREE.IcosahedronGeometry(1.6, 6);
   var material = new THREE.MeshPhysicalMaterial({
-    color: 0x2b2e35,
-    metalness: 0.75,
-    roughness: 0.22,
-    clearcoat: 0.7,
-    clearcoatRoughness: 0.25,
+    color: 0x1c1d22,
+    metalness: 0.3,
+    roughness: 0.42,
+    clearcoat: 0.6,
+    clearcoatRoughness: 0.3,
   });
   var mesh = new THREE.Mesh(geometry, material);
   scene.add(mesh);
 
-  var keyLight = new THREE.PointLight(0x21a179, 60, 20, 2);
+  var keyLight = new THREE.PointLight(0x21a179, 75, 20, 2);
   keyLight.position.set(-3, 2, 3);
   scene.add(keyLight);
 
-  var rimLight = new THREE.PointLight(0xc026d3, 70, 20, 2);
+  var rimLight = new THREE.PointLight(0xc026d3, 85, 20, 2);
   rimLight.position.set(3, -1.5, 2);
   scene.add(rimLight);
 
-  var hemiLight = new THREE.HemisphereLight(0x21a179, 0x0a0a0d, 1.4);
+  var hemiLight = new THREE.HemisphereLight(0xffffff, 0xf3f1ec, 0.6);
   scene.add(hemiLight);
 
-  scene.add(new THREE.AmbientLight(0xffffff, 0.25));
+  scene.add(new THREE.AmbientLight(0xffffff, 0.15));
 
   function resize() {
     var w = container.clientWidth;
