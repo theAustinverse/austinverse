@@ -1,27 +1,28 @@
 /* ==========================================================================
    Austinverse — Portfolio
    Vanilla CSS, mobile-first, single breakpoint at 768px.
-   Light cinematic style: warm off-white canvas, huge minimal type, thin
-   accents, custom cursor, glossy WebGL hero centerpiece on the homepage.
+   Light studio style: tinted off-white canvas, huge minimal type, mono
+   labels, soft rounded corners, matte WebGL hero centerpiece.
    ========================================================================== */
 
 /* ---------- Design tokens ---------- */
 :root {
-  --color-bg: #f3f1ec;
-  --color-bg-void: #f3f1ec;
+  --color-bg: #f0f1fa;
+  --color-bg-void: #f0f1fa;
   --color-bg-elevated: #ffffff;
-  --color-border: rgba(14, 15, 18, 0.1);
-  --color-border-strong: rgba(14, 15, 18, 0.22);
-  --color-text: #0e0f12;
-  --color-text-muted: #6b6d73;
-  --color-accent: #21a179;
-  --color-accent-dark: #16785a;
-  --color-accent-pop: #c026d3;
-  --color-accent-pop-dark: #9a1ea8;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-border-strong: rgba(0, 0, 0, 0.22);
+  --color-text: #000000;
+  --color-text-muted: #63677a;
+  --color-accent: #1a2ffb;
+  --color-accent-dark: #0016ec;
+  --color-accent-pop: #8832f7;
+  --color-accent-pop-dark: #6a1fd0;
   --color-accent-contrast: #ffffff;
 
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   --container-max: 1240px;
   --space-1: 0.5rem;
@@ -30,7 +31,7 @@
   --space-4: 2.5rem;
   --space-5: 4rem;
 
-  --radius: 14px;
+  --radius: 20px;
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
   --transition-tilt: 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -85,50 +86,37 @@ button {
   padding-inline: var(--space-2);
 }
 
-/* ---------- Custom cursor (fine pointers only) ---------- */
-@media (hover: hover) and (pointer: fine) {
-  html.has-custom-cursor,
-  html.has-custom-cursor * {
-    cursor: none !important;
-  }
+/* ---------- Cross marks (corner accent motif) ---------- */
+.cross-mark {
+  position: absolute;
+  width: clamp(0.875rem, 1.4vw, 1.5rem);
+  height: clamp(0.875rem, 1.4vw, 1.5rem);
+  pointer-events: none;
+  color: currentColor;
+  opacity: 0.35;
+}
 
-  .cursor-dot,
-  .cursor-ring {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    pointer-events: none;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    will-change: transform;
-  }
+.cross-mark::before,
+.cross-mark::after {
+  content: "";
+  position: absolute;
+  background-color: currentColor;
+}
 
-  .cursor-dot {
-    width: 6px;
-    height: 6px;
-    background-color: var(--color-text);
-    transition: opacity var(--transition-fast);
-  }
+.cross-mark::before {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: translateY(-50%);
+}
 
-  .cursor-ring {
-    width: 34px;
-    height: 34px;
-    border: 1px solid var(--color-border-strong);
-    transition: width var(--transition-fast), height var(--transition-fast),
-      border-color var(--transition-fast), opacity var(--transition-fast);
-  }
-
-  html.has-custom-cursor.cursor-hover .cursor-ring {
-    width: 56px;
-    height: 56px;
-    border-color: var(--color-accent);
-  }
-
-  html.has-custom-cursor.cursor-idle .cursor-dot,
-  html.has-custom-cursor.cursor-idle .cursor-ring {
-    opacity: 0;
-  }
+.cross-mark::after {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
 }
 
 /* ---------- Header / top nav ---------- */
@@ -136,7 +124,7 @@ button {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: rgba(243, 241, 236, 0.78);
+  background-color: rgba(240, 241, 250, 0.78);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--color-border);
 }
@@ -174,7 +162,8 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-weight: 500;
   font-size: 0.8rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -258,6 +247,7 @@ button {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -589,7 +579,8 @@ button {
 }
 
 .work-card-tags li {
-  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   border: 1px solid var(--color-border);
   border-radius: 999px;
   padding: 0.2rem 0.65rem;
@@ -676,7 +667,8 @@ button {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
   color: var(--color-text-muted);
 }
 

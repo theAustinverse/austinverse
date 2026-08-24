@@ -25,31 +25,46 @@ import * as THREE from "./vendor/three.module.min.js";
 
   var scene = new THREE.Scene();
   var camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-  camera.position.set(0, 0, 6);
+  camera.position.set(0, 0, 4.4);
 
-  var geometry = new THREE.IcosahedronGeometry(1.6, 6);
-  var material = new THREE.MeshPhysicalMaterial({
-    color: 0x1c1d22,
-    metalness: 0.3,
-    roughness: 0.42,
-    clearcoat: 0.6,
-    clearcoatRoughness: 0.3,
+  // Cluster of matte-plastic "connector" capsules, tumbled together.
+  var group = new THREE.Group();
+  scene.add(group);
+
+  var palette = [0x1a2ffb, 0xf5f6fb, 0x111214];
+  var pieces = [
+    { radius: 0.34, length: 1.5, pos: [0, 0, 0], rot: [0.3, 0.2, 0], color: 0 },
+    { radius: 0.3, length: 1.3, pos: [0.55, 0.35, 0.2], rot: [1.4, 0.6, 0.3], color: 1 },
+    { radius: 0.26, length: 1.1, pos: [-0.5, -0.3, 0.3], rot: [0.9, -0.7, 1.1], color: 2 },
+    { radius: 0.22, length: 0.9, pos: [0.2, -0.6, -0.3], rot: [-0.6, 1.1, 0.4], color: 1 },
+    { radius: 0.24, length: 1.0, pos: [-0.3, 0.55, -0.25], rot: [0.5, -1.2, -0.5], color: 0 },
+  ];
+
+  pieces.forEach(function (piece) {
+    var geometry = new THREE.CapsuleGeometry(piece.radius, piece.length, 6, 16);
+    var material = new THREE.MeshStandardMaterial({
+      color: palette[piece.color],
+      roughness: 0.75,
+      metalness: 0.05,
+    });
+    var capsule = new THREE.Mesh(geometry, material);
+    capsule.position.set(piece.pos[0], piece.pos[1], piece.pos[2]);
+    capsule.rotation.set(piece.rot[0], piece.rot[1], piece.rot[2]);
+    group.add(capsule);
   });
-  var mesh = new THREE.Mesh(geometry, material);
-  scene.add(mesh);
 
-  var keyLight = new THREE.PointLight(0x21a179, 75, 20, 2);
-  keyLight.position.set(-3, 2, 3);
+  var keyLight = new THREE.PointLight(0xffffff, 40, 20, 2);
+  keyLight.position.set(-3, 3, 4);
   scene.add(keyLight);
 
-  var rimLight = new THREE.PointLight(0xc026d3, 85, 20, 2);
+  var rimLight = new THREE.PointLight(0x1a2ffb, 35, 20, 2);
   rimLight.position.set(3, -1.5, 2);
   scene.add(rimLight);
 
-  var hemiLight = new THREE.HemisphereLight(0xffffff, 0xf3f1ec, 0.6);
+  var hemiLight = new THREE.HemisphereLight(0xffffff, 0xf0f1fa, 0.9);
   scene.add(hemiLight);
 
-  scene.add(new THREE.AmbientLight(0xffffff, 0.15));
+  scene.add(new THREE.AmbientLight(0xffffff, 0.4));
 
   function resize() {
     var w = container.clientWidth;
@@ -74,8 +89,8 @@ import * as THREE from "./vendor/three.module.min.js";
   function animate() {
     var elapsed = clock.getElapsedTime();
     if (!prefersReducedMotion) {
-      mesh.rotation.y = elapsed * 0.18;
-      mesh.rotation.x = elapsed * 0.08;
+      group.rotation.y = elapsed * 0.16;
+      group.rotation.x = Math.sin(elapsed * 0.2) * 0.15;
     }
     camera.position.x += (pointerX * 0.6 - camera.position.x) * 0.04;
     camera.position.y += (-pointerY * 0.6 - camera.position.y) * 0.04;
